@@ -1,0 +1,668 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\li}{li}
+\newcommand{\kap}{\kappa_M}
+\newcommand{\EE}{\mathcal E}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\eps}{\varepsilon}
+\hypersetup{pdfauthor={Deep Bhattacharjee, Ushashi Bhattacharya, Tristan Romanov},
+ pdftitle={Sieve bounds and search-depth obstructions for the Erdos-Straus equation}}
+\title{Sieve bounds and search-depth obstructions\\
+for the Erd\H{o}s--Straus equation}
+\author{Deep Bhattacharjee \and Ushashi Bhattacharya \and Tristan Romanov}
+\date{15 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For a prime $p\equiv1\pmod4$, consider the Type~I source indexed by $i$
+which succeeds when some divisor $d\mid p+i$ satisfies
+$d\equiv3\pmod4$ and $p+d\equiv0\pmod{4i}$. We prove an upper bound
+$O_M(X(\log X)^{-1-\kappa_M})$ for primes where the first $M$ sources
+fail, with $\kappa_M=\sum_{i\le M}1/\varphi(4i)\sim
+\zeta(2)\zeta(3)\log M/(3\zeta(6))$. We make its dependence on $M$
+uniform up to $(\log X)/5$. A cofactor certificate produces fixed
+residue classes and an arithmetic large-sieve estimate
+$O(X\exp(-a\sqrt{\log X}))$ for failures through
+$\lfloor\sqrt p/2\rfloor$, for every $a<0.16$.
+Exact checks exhibit $p=30241$ as a failure of that cutoff,
+whose first source is $161$. The associated unit-fraction identity
+and a complete factor-pair criterion describe the pointwise task
+left by these density estimates.
+\end{abstract}
+\noindent\textit{2020 Mathematics Subject Classification.}
+11D68, 11N35, 11N36.\\
+\textit{Keywords.} Egyptian fractions, Type~I solutions, arithmetic large
+sieve, search depth, reciprocal totient sums.
+
+\section{Introduction and results}
+The Erd\H{o}s--Straus conjecture asks for positive integers $x,y,z$ with
+\begin{equation}\label{eq:es}
+ \frac4n=\frac1x+\frac1y+\frac1z
+ \qquad(n\ge2).
+\end{equation}
+Scaling all denominators by $t$ carries a solution for $n$ to one for
+$tn$, so the prime inputs suffice. For a prime $p\equiv3\pmod4$,
+the identity with denominators
+$((p+1)/4,\ p(p+1)/2,\ p(p+1)/2)$ applies.
+The prime $2$ is immediate. We therefore concentrate on
+$p\equiv1\pmod4$.
+
+For $1\le i<p$, say that \emph{source $i$ succeeds} when
+\begin{equation}\label{eq:source}
+ d\mid p+i,\qquad d\equiv3\pmod4,\qquad 4i\mid p+d
+\end{equation}
+for a positive divisor $d$. Put
+\[
+ F_i=\{p\equiv1\pmod4\text{ prime for which source }i\text{ fails}\}.
+\]
+Write
+\[
+ E(X;M)=\#\left\{p\le X:p>M,\
+                         p\in\bigcap_{i=1}^M F_i\right\}.
+\]
+The harmless restriction $p>M$ keeps the source terminology uniform.
+Write
+\[
+ M(p)=\lfloor\sqrt p/2\rfloor,\qquad
+ E_{\sqrt{\ }}(X)=\#\{p\le X:p\in\bigcap_{i\le M(p)}F_i\}.
+\]
+The parameter $M(p)$ is a specified search budget.
+
+The sieve proofs develop the source analysis in Romanov's circulated
+manuscript \cite{Romanov}. The congruences \eqref{eq:source} are
+Yamamoto's Type~I congruence family with parameter $a=1$, in the
+classification of Elsholtz and Tao \cite[Proposition~1.9]{ET}.
+They provide a more restricted search than the full set of
+unit-fraction solutions. Dahan's two-parameter Type~II search
+\cite{Dahan} and the companion work of Bhattacharjee and Bhattacharya
+\cite{BB} concern other witness sets.
+Our count $E_{\sqrt{\ }}(X)$ records failure of the specified Type~I
+budget, including the explicit prime in Section~\ref{sec:pointwise}.
+
+Here and below $\log$ is natural, and constants implicit in $O_B$ or
+$\ll_B$ may depend on $B$. Let
+\[
+ \kappa_M=\sum_{i\le M}\frac1{\varphi(4i)},\qquad
+ C_*=\frac{\zeta(2)\zeta(3)}{3\zeta(6)}=0.64786548\ldots .
+\]
+\begin{theorem}[Fixed and logarithmic depth]\label{thm:uniform}
+For fixed $M\ge1$,
+\begin{equation}\label{eq:fixed}
+ E(X;M)\ll_M \frac{X}{(\log X)^{1+\kappa_M}}.
+\end{equation}
+There is an absolute $c>0$ such that, for each $B\ge2$, a constant $K_B$
+satisfies
+\begin{equation}\label{eq:uniform}
+ E(X;M)\le K_B\pi(X)(\log X)^{-\kappa_M}
+ \exp\left(\frac{\kappa_M\log(4M)}B+
+             c\kappa_M\log\log(3M)\right)
+\end{equation}
+uniformly for $X\ge3$ and $2\le M\le(\log X)/5$.
+The constant $K_B$ can be ineffective.
+\end{theorem}
+\begin{corollary}\label{cor:loglog}
+For every $\eps>0$,
+\[
+ E_{\sqrt{\ }}(X)\ll_\eps
+ \pi(X)\exp(-(C_*-\eps)(\log\log X)^2).
+\]
+\end{corollary}
+
+For an odd prime $f$, define
+\[
+ \omega(f)=\#\{m\mid f+1:m\equiv3\pmod4\},\qquad \omega(2)=0,
+ \qquad
+ L(Q)=\sum_{q\le Q}\mu^2(q)\prod_{f\mid q}
+                       \frac{\omega(f)}{f-\omega(f)}.
+\]
+Empty products equal one, and products indexed by $f$ run over primes.
+\begin{theorem}[Fixed residue classes]\label{thm:large}
+If $I$ contains $N$ consecutive integers and $Q\ge2$, then
+\[
+ \#\{p\in I:p\equiv1\pmod4\text{ prime},\
+       p>\lfloor(Q+1)/3\rfloor,\
+       p\in\bigcap_{i\le\lfloor(Q+1)/3\rfloor} F_i\}
+ \le\frac{N+Q^2}{L(Q)}.
+\]
+Furthermore, with $c_1=1/(40\log2)$,
+\begin{equation}\label{eq:L}
+ \log L(Q)\ge(2\sqrt{c_1/e}-o(1))\sqrt{\log Q}.
+\end{equation}
+Consequently, for every $a<0.16$,
+\begin{equation}\label{eq:sqrt}
+ E_{\sqrt{\ }}(X)\ll_a X\exp(-a\sqrt{\log X}).
+\end{equation}
+\end{theorem}
+The constant before $\sqrt{\log X}$ furnished by the proof can be
+any value smaller than $\sqrt{2c_1/e}>0.16$.
+
+Vaughan's classical bound for actual insoluble integers has exponent
+$2/3$ \cite{Vaughan}. Recent preprints report further estimates on
+those exceptional integers \cite{DahanComposite,Trybushnyi}.
+The failure count studied here has its own prescribed witness
+family. In particular, \eqref{eq:sqrt} bounds a set that can contain
+representable primes.
+
+\section{Algebraic certificates}
+\begin{lemma}[Source identity]\label{lem:identity}
+Under \eqref{eq:source}, put $k=(p+d)/(4i)$ and $A=(p+i)/d$. Then
+\begin{equation}\label{eq:triple}
+ (x,y,z)=(ik,ikA,pkA)
+\end{equation}
+are positive integers satisfying \eqref{eq:es} for $n=p$.
+Exactly one of them is divisible by $p$.
+\end{lemma}
+\begin{proof}
+The numerator of the sum of unit fractions over common denominator
+$pikA$ is
+$pA+p+i=(p+i)(p+d)/d=4ikA$.
+Also $\gcd(p,i)=1$ and $p\nmid(p+i)$.
+Since $d\mid p+i$, both $d$ and $A$ are coprime to $p$.
+The equation $4ik=p+d$ gives $p\nmid k$. These facts prove the last claim.
+\end{proof}
+
+\begin{lemma}[Prime and cofactor rules]\label{lem:rules}
+Let $q\mid p+i$ with $q$ prime. Source $i$ succeeds if
+$q\equiv-p\pmod{4i}$. It also succeeds if $i$ is even and
+$q\equiv-1-i\pmod{4i}$.
+The latter rule holds for composite divisors $q$ as well.
+\end{lemma}
+\begin{proof}
+In the first case use $d=q$, since $p\equiv1\pmod4$.
+For the second take $d=(p+i)/q$.
+The congruence implies $\gcd(q,4i)=1$ and
+\[
+ q(p+d)=qp+p+i\equiv-i(p-1)\equiv0\pmod{4i}.
+\]
+Thus $4i\mid p+d$, which also gives $d\equiv3\pmod4$.
+\end{proof}
+
+\begin{lemma}[Classes independent of $p$]\label{lem:classes}
+For an odd prime $f$ and a divisor $m\mid f+1$ with $m\equiv3\pmod4$,
+set $i=(f+1)/m$. Then $i$ is even and
+$2\le i\le(f+1)/3<f$. Every prime $p\equiv1\pmod4$
+with $p\equiv-i\pmod f$ has source $i$ succeeding.
+The $\omega(f)$ residues $-i\pmod f$ are distinct and nonzero.
+\end{lemma}
+\begin{proof}
+Since $m$ is odd, $i$ is even. Also
+$f=im-1\equiv-i-1\pmod{4i}$, so Lemma~\ref{lem:rules} applies
+once $i<p$. If $p\le i$, divisibility $f\mid p+i$ would give
+$0<p+i\le2i\le2(f+1)/3<f$, a contradiction for the primes
+with $\omega(f)>0$. Distinct divisors give distinct
+$i\in[2,(f+1)/3]$, so give distinct nonzero residues.
+\end{proof}
+
+\section{The reciprocal-totient exponent}
+\begin{lemma}\label{lem:kappa}
+One has $\kappa_M=C_*\log M+O(1)$.
+\end{lemma}
+\begin{proof}
+The divisor identity
+$n/\varphi(n)=\sum_{d\mid n}\mu^2(d)/\varphi(d)$ gives
+\[
+ \sum_{\substack{j\le x\\j\text{ odd}}}\frac1{\varphi(j)}
+ =\sum_{\substack{d\le x\\d\text{ odd}}}
+   \frac{\mu^2(d)}{d\varphi(d)}
+   \sum_{\substack{k\le x/d\\k\text{ odd}}}\frac1k .
+\]
+The inner sum is $\frac12\log(x/d)+O(1)$.
+The sums with coefficients $\mu^2(d)/(d\varphi(d))$, and the
+same coefficients times $\log d$, converge. Their tails,
+using $\varphi(d)\gg_\eps d^{1-\eps}$, justify extending
+the leading coefficient to infinity with bounded error.
+Its Euler product is
+\[
+ \frac12\prod_{\ell>2}\left(1+\frac1{\ell(\ell-1)}\right)
+ =\frac13\prod_\ell\left(1+\frac1{\ell(\ell-1)}\right)=C_*.
+\]
+The last product equals $\zeta(2)\zeta(3)/\zeta(6)$.
+Write $i=2^a j$ with $j$ odd. Since
+$\varphi(4i)=2^{a+1}\varphi(j)$, summing the odd estimate
+with weights $2^{-a-1}$ yields
+$\kappa_M=C_*\log M+O(1)$.
+\end{proof}
+
+\section{A Selberg bound with the remainder exposed}\label{sec:selberg}
+We record the finite sieve inequality used for uniformity.
+Let $P$ be a product of finitely many primes. At a prime $q\mid P$
+let $\Omega(q)$ have $\rho(q)$ forbidden residues with $0<\rho(q)<q$.
+Put $g(q)=\rho(q)/q$ and $h(q)=g(q)/(1-g(q))$, extended
+multiplicatively to squarefree integers. Suppose
+\[
+ |\mathcal A_d|=X'g(d)+R_d,\qquad |R_d|\le\rho(d)
+\]
+for squarefree $d\mid P$, with $\rho(d)=\prod_{q\mid d}\rho(q)$.
+Here $\mathcal A_d$ imposes a forbidden residue at each $q\mid d$.
+\begin{lemma}\label{lem:selberg}
+For $\xi>1$ and $G(\xi)=\sum_{d<\xi,d\mid P}h(d)$,
+the number avoiding all forbidden residues is at most
+\[
+ \frac{X'}{G(\xi)}
+ +\sum_{\substack{d<\xi^2\\d\mid P}}3^{\nu(d)}\rho(d).
+\]
+\end{lemma}
+\begin{proof}
+Choose $\lambda_1=1$, with $\lambda_d=0$ unless $d\mid P$ and
+$d<\xi$, and majorize avoidance by
+$(\sum_{d}\lambda_d\mathbf1_{\mathcal A_d})^2$.
+The main quadratic form is
+\[
+ \sum_{d_1,d_2}\lambda_{d_1}\lambda_{d_2}g([d_1,d_2])
+ =\sum_l\frac1{h(l)}
+       \left(\sum_{l\mid d}\lambda_d g(d)\right)^2.
+\]
+This follows prime by prime from $1/g(q)=1+1/h(q)$.
+Writing $y_l=\sum_{l\mid d}\lambda_dg(d)$, inversion gives
+$\lambda_1=\sum_l\mu(l)y_l$. Choose
+$y_l=\mu(l)h(l)/G(\xi)$ for $l<\xi$ dividing $P$, and zero otherwise.
+The quadratic form is then $1/G(\xi)$ and inversion gives
+\[
+ |\lambda_d|=
+ \prod_{q\mid d}(1+h(q))\,
+ \frac{\sum_{m<\xi/d,\ (m,d)=1,\ m\mid P}h(m)}{G(\xi)}
+ \le1.
+\]
+For the inequality, the numerator is a sub-sum of $G(\xi)$
+by writing the summation integer uniquely as $am$ with $a\mid d$.
+For a squarefree $d$ there are $3^{\nu(d)}$ ordered pairs
+$(d_1,d_2)$ with $[d_1,d_2]=d$. Bounding their remainder
+contributions with $|\lambda_d|\le1$ proves the result.
+\end{proof}
+This is the usual Selberg quadratic-form argument
+\cite[Chapter~9]{Richert}, stated here to keep its constants in $M$ visible.
+
+\section{Proof at logarithmic depth}
+Set
+\[
+ N_M=4\lcm(1,\ldots,M).
+\]
+Fix a reduced class $r\pmod{N_M}$ with $r\equiv1\pmod4$.
+For primes $q>2M$ put
+\[
+ \Omega_r(q)=\{0\}\cup
+   \{-i\pmod q:i\le M,\ q\equiv-r\pmod{4i}\},\qquad
+ \rho_r(q)=|\Omega_r(q)|.
+\]
+The residues are distinct and $\rho_r(q)\le M+1<q$.
+For primes $p>\max(M,y)$ in this class, failure of all $M$
+sources forces avoidance of $\Omega_r(q)$ for $2M<q<y$,
+by the first rule of Lemma~\ref{lem:rules}. The integers
+$n\le X$, $n\equiv r\pmod{N_M}$, have
+\[
+ X'=X/N_M,\qquad |R_d|\le\rho_r(d)
+\]
+by the Chinese remainder theorem.
+
+\subsection{Upper prime sums}
+Brun--Titchmarsh gives
+$\pi(t;m,a)\le2t/(\varphi(m)\log(t/m))$ for reduced $a$ and $t>m$,
+hence at most $4t/(\varphi(m)\log t)$ for $t\ge m^2$.
+For $m=4i\le4M$, the reciprocal sum over $2M<q\le m^2$
+is bounded by
+$1/(2M)+(1+\log(8M))/m$ by counting all integers in the progression.
+Partial summation beyond $m^2$, summed over $i\le M$,
+therefore gives uniformly in $r$
+\begin{align}
+ \sum_{2M<q<y}\frac{\rho_r(q)}q
+ &\le(1+4\kappa_M)\log\log y+O((\log(3M))^2),\label{eq:up1}\\
+ \sum_{2M<q<y}\frac{\rho_r(q)\log q}q
+ &\le(1+4\kappa_M)\log y+
+                     O(\kappa_M+(\log(3M))^3).\label{eq:up2}
+\end{align}
+The extra $1$ comes from the residue $0$ and Mertens' estimates.
+
+\subsection{Truncating the Euler product}
+Take
+\[
+ \xi=X^{1/4},\qquad u=10\kappa_M+10,\qquad
+ y=\xi^{1/u},\qquad
+ V_r(y)=\prod_{2M<q<y}(1-\rho_r(q)/q).
+\]
+Put $h(q)=\rho_r(q)/(q-\rho_r(q))$. For $\delta=1/\log y$,
+Rankin's inequality yields
+\[
+ \frac1{V_r(y)}-G(\xi)
+ \le \xi^{-\delta}\prod_{2M<q<y}(1+h(q)q^\delta).
+\]
+Relative to $\prod(1+h(q))=1/V_r(y)$, the product on the
+right is at most
+\[
+ \exp\left(\sum_{2M<q<y}\frac{\rho_r(q)}q(q^\delta-1)\right)
+ \le \exp\left(\frac{e-1}{\log y}
+              \sum_{2M<q<y}\frac{\rho_r(q)\log q}q\right).
+\]
+Since $\kappa_M=O(\log(3M))$, the error in
+\eqref{eq:up2} divided by $\log y$ tends to zero uniformly
+for $M\le(\log X)/5$. Our choice of $u$ ensures
+$u>(e-1)(1+4\kappa_M)+\log2+1$, so
+$G(\xi)\ge1/(2V_r(y))$ for sufficiently large $X$.
+
+The remainder in Lemma~\ref{lem:selberg} is at most
+\[
+ \xi^2\prod_{2M<q<y}(1+3\rho_r(q)/q)
+ \le X^{1/2}\exp\left(3\sum_{2M<q<y}\rho_r(q)/q\right)
+ =X^{1/2+o(1)}
+\]
+uniformly by \eqref{eq:up1}. Rosser--Schoenfeld's estimate
+$\psi(M)<1.04M$ \cite[Theorem~12]{RS} gives
+$N_M=4e^{\psi(M)}\le4X^{0.208}$.
+Summing the remainder over the classes costs at most
+$X^{0.71+o(1)}$. Discarded primes $p\le y$ contribute at most $y$.
+
+\subsection{The lower prime sum}
+Siegel--Walfisz, for fixed $B\ge2$, gives
+\[
+ \pi(t;m,a)=\frac{\li(t)}{\varphi(m)}
+             +O_B(t e^{-c_B\sqrt{\log t}})
+ \qquad(m\le(\log t)^B,\ (a,m)=1)
+\]
+with some $c_B>0$ and possibly ineffective constants.
+For $m=4i$ start partial summation at
+$t_0=\max(2M,\exp(m^{1/B}))$. Uniformly in the reduced class,
+\[
+ \sum_{\substack{2M<q<y\\q\equiv a\ (m)}}\frac1q
+ \ge\frac{\log\log y-\log\log t_0}{\varphi(m)}-e_m,
+ \qquad
+ e_m\ll_B(1+m^{1/(2B)})e^{-c_Bm^{1/(2B)}}.
+\]
+Here $t_0<y$ for sufficiently large $X$, uniformly in the
+stated range. The errors satisfy $\sum_i e_{4i}\ll_B1$.
+Also
+$\log\log t_0\le\log\log(2M)+\log(m)/B$.
+Using Mertens' estimate for the residue $0$ gives, with
+$L_M=\sum_{i\le M}\log(4i)/\varphi(4i)$,
+\[
+ \sum_{2M<q<y}\frac{\rho_r(q)}q
+ \ge(1+\kappa_M)(\log\log y-\log\log(2M))-L_M/B-O_B(1).
+\]
+Consequently
+\[
+ V_r(y)\ll_B
+ \left(\frac{\log(2M)}{\log y}\right)^{1+\kappa_M}
+ e^{L_M/B}.
+\]
+The $\varphi(N_M)/2$ reduced classes give total main term
+$X\varphi(N_M)V_r(y)/N_M$.
+Since $\varphi(N_M)/N_M\ll1/\log M$ for $M\ge2$, and
+$\log y=\log X/(4u)$, the resulting upper bound is
+\[
+ X(\log X)^{-1-\kappa_M}
+ \exp\left(L_M/B+O(\kappa_M\log\log(3M))\right).
+\]
+Both $X^{0.71+o(1)}$ and $y$ are smaller than this bound for
+large $X$ because its size is $X^{1-o(1)}$.
+Now $L_M\le\kappa_M\log(4M)$ and $\pi(X)\asymp X/\log X$,
+which proves \eqref{eq:uniform} after enlarging $K_B$.
+
+For fixed $M$, use the prime number theorem in the fixed
+progressions instead of the preceding lower bound.
+It gives $\sum\rho_r(q)/q=(1+\kappa_M)\log\log y+O_M(1)$.
+The same Selberg proof with fixed $u$ gives \eqref{eq:fixed},
+also for $M=1$. This proves Theorem~\ref{thm:uniform}.
+
+For Corollary~\ref{cor:loglog}, take $M=\lfloor(\log X)/5\rfloor$.
+For $p>(\log X)^3$, the prescribed depth $M(p)$ exceeds $M$.
+Lemma~\ref{lem:kappa} gives $\kappa_M=C_*\log\log X+O(1)$.
+Apply \eqref{eq:uniform}, then choose fixed $B$ arbitrarily large
+to obtain the stated exponent. Small primes are absorbed.
+
+\section{The arithmetic large sieve}
+The arithmetic form of the large sieve \cite{Montgomery,IK} states
+that a set of integers in an interval containing $N$ integers
+which avoids $\omega(f)<f$ residues at each prime $f\le Q$ has
+size at most
+\[
+ (N+Q^2)\left(\sum_{q\le Q}\mu^2(q)
+           \prod_{f\mid q}\frac{\omega(f)}{f-\omega(f)}\right)^{-1}.
+\]
+Lemma~\ref{lem:classes} supplies precisely those fixed forbidden
+residues for our failure set, proving the first assertion of
+Theorem~\ref{thm:large}.
+
+\begin{lemma}\label{lem:mass}
+For $S(y)=\sum_{\sqrt y<f\le y}\omega(f)/f$ one has
+$S(y)\ge(c_1-o(1))\log y$ with $c_1=1/(40\log2)$.
+\end{lemma}
+\begin{proof}
+On a dyadic interval $(t,2t]$, count only divisors
+$m\le t^{2/5}$ with $m\equiv3\pmod4$. Bombieri--Vinogradov gives
+\[
+ \sum_{m\le t^{2/5}}\left|
+ \pi(2t;m,-1)-\pi(t;m,-1)
+ -\frac{\li(2t)-\li(t)}{\varphi(m)}\right|
+ \ll t/(\log t)^2.
+\]
+This follows from its usual level $t^{1/2}(\log t)^{-A}$
+by taking $t$ sufficiently large. Further,
+\[
+ \sum_{\substack{m\le t^{2/5}\\m\equiv3\ (4)}}\frac1{\varphi(m)}
+ \ge\sum_{\substack{m\le t^{2/5}\\m\equiv3\ (4)}}\frac1m
+ \ge\frac1{10}\log t-O(1).
+\]
+Using $1/f\ge1/(2t)$ and
+$\li(2t)-\li(t)\ge t/\log(2t)$ shows
+$\sum_{t<f\le2t}\omega(f)/f\ge1/20-o(1)$.
+There are $(\log y)/(2\log2)+O(1)$ disjoint such intervals
+in $(\sqrt y,y]$, and their errors tend to zero uniformly
+as their least endpoint tends to infinity. This gives the claim.
+\end{proof}
+
+\begin{proof}[Proof of \eqref{eq:L}]
+Put $w_f=\omega(f)/f$ on $\sqrt y<f\le y$.
+The divisor bound $\omega(f)\le\tau(f+1)\ll f^{1/8}$ gives
+\[
+ T(y)=\sum_{\sqrt y<f\le y}w_f^2\ll y^{-1/3}.
+\]
+If $k\ge2$ and $y^k\le Q$, products of $k$ distinct primes
+in the interval contribute to $L(Q)$. Expanding $S(y)^k$,
+the total of ordered tuples with a repeated prime is at most
+$\binom k2T(y)S(y)^{k-2}$ by assigning a repeated pair.
+It follows that
+\[
+ L(Q)\ge\frac{S(y)^k-\binom k2T(y)S(y)^{k-2}}{k!}.
+\]
+Choose $\lambda=\sqrt{e/c_1}$, $\log y=\lambda\sqrt{\log Q}$,
+and $k=\lfloor\log Q/\log y\rfloor$. Then
+$\binom k2T(y)/S(y)^2=o(1)$ and
+$eS(y)/k\ge e^2-o(1)$.
+Stirling's formula yields
+\[
+ \log L(Q)\ge k\log(eS(y)/k)-O(\log k)
+ \ge (2/\lambda-o(1))\sqrt{\log Q}.
+\]
+\end{proof}
+
+To obtain \eqref{eq:sqrt}, discard $p\le\sqrt X$ and partition
+the rest into dyadic intervals $(Y/2,Y]$.
+Set $M_Y=\lfloor\sqrt{Y/2}/2\rfloor$ and $Q=3M_Y-1$.
+Then $M(p)\ge M_Y$, $Q^2\le9Y/8$, and
+$\log Q=\frac12\log Y+O(1)$.
+The interval bound and \eqref{eq:L} give
+$O_a(Y e^{-a\sqrt{\log Y}})$ for every
+$a<\sqrt{2c_1/e}$.
+For $Y=X/2^j$ and $j\log2\le\frac12\log X+O(1)$,
+\[
+ \sqrt{\log X-j\log2}
+ \ge\sqrt{\log X}-\frac{j\log2}{\sqrt{\log X}}.
+\]
+Summing the resulting geometric series gives
+$O_a(Xe^{-a\sqrt{\log X}})$, proving the theorem.
+
+\section{The pointwise problem and an exact obstruction}\label{sec:pointwise}
+\begin{proposition}[A depth failure]\label{prop:30241}
+The prime $p=30241$ has no successful source with $1\le i\le160$.
+Its first successful source is $i=161$, with $d=27$.
+It therefore fails the cutoff $M(p)=86$ while admitting
+\[
+ \frac4{30241}=\frac1{7567}+\frac1{8520442}
+                         +\frac1{1600414202}.
+\]
+\end{proposition}
+\begin{proof}
+Here $30241+161=30402=2\cdot3^3\cdot563$ and
+$30241+27=30268=4\cdot161\cdot47$.
+Thus $k=47$, $A=1126$, and Lemma~\ref{lem:identity}
+gives the displayed denominators.
+The finite absence assertion is verified by the following
+standalone integer computation. It tests primality and every
+divisor of each of the $160$ shifted integers, using a factor pair
+to avoid searching above the square root.
+\end{proof}
+\begin{verbatim}
+from math import isqrt
+p = 30241
+assert all(p % d for d in range(2, isqrt(p) + 1))
+for i in range(1, 161):
+    n = p + i
+    for q in range(1, isqrt(n) + 1):
+        if n % q == 0:
+            for d in (q, n // q):
+                assert d % 4 != 3 or (p + d) % (4 * i) != 0
+i, d = 161, 27
+k, A = (p + d) // (4 * i), (p + i) // d
+x, y, z = i*k, i*k*A, p*k*A
+assert 4*x*y*z == p*(x*y + x*z + y*z)
+\end{verbatim}
+This prime identifies an explicit limitation of the square-root
+budget itself. It also gives a concrete member of the failure set
+to which Theorem~\ref{thm:large} applies.
+
+\begin{proposition}[Every fixed prime-cofactor menu leaves primes]
+Fix $Q$. Infinitely many primes $p\equiv1\pmod4$ avoid
+all the fixed residues of Lemma~\ref{lem:classes} with $f\le Q$.
+\end{proposition}
+\begin{proof}
+None of those residues equals $1\pmod f$, because
+$2\le i\le(f+1)/3<f-1$ whenever $\omega(f)>0$.
+Thus every prime in the reduced class
+$p\equiv1\pmod{4\prod_{2<f\le Q}f}$ avoids the menu.
+Dirichlet's theorem supplies infinitely many such primes.
+\end{proof}
+
+For the full equation one can give an exact finite criterion
+with a larger search domain.
+\begin{proposition}[Complete factor-pair criterion]\label{prop:full}
+For $n\ge2$, equation \eqref{eq:es} is solvable if and only if
+there exist an integer
+\[
+ \lfloor n/4\rfloor+1\le x\le\lfloor3n/4\rfloor
+\]
+and a divisor $d\mid(n x)^2$ such that, with $a=4x-n$, $b=nx$,
+\[
+ 1\le d\le b,\qquad d\equiv-b\pmod a,\qquad
+ b^2/d\equiv-b\pmod a,\qquad
+ x\le (b+d)/a .
+\]
+The remaining denominators are $y=(b+d)/a$ and
+$z=(b+b^2/d)/a$.
+\end{proposition}
+\begin{proof}
+Order a solution as $x\le y\le z$. Positivity of the other
+two fractions forces $x>n/4$, and
+$4/n\le3/x$ gives $x\le3n/4$.
+The remaining equation $a/b=1/y+1/z$ is equivalent to
+$(ay-b)(az-b)=b^2$. Both factors are positive, and $y\le z$
+puts the first in $[1,b]$. The integrality and ordering
+conditions are precisely those stated.
+Conversely, these conditions produce positive integers
+$x\le y\le z$ satisfying the factored equation, hence
+\eqref{eq:es}.
+\end{proof}
+Thus a full proof requires showing that this factor-pair set is
+nonempty for every remaining prime, or finding another universal
+construction. The estimates proved here give no upper threshold
+past which their exceptional count is zero. In particular,
+$Xe^{-a\sqrt{\log X}}$ grows without bound.
+A probabilistic survival model would need an independently
+justified arithmetic statement to reach the pointwise conclusion.
+
+\section{Exact computation and provenance}
+The standard-library program
+\texttt{checks/python/source\_search.py}
+checks all $1{,}289{,}653$ pairs
+$(p,i)$ with $p<200000$, $p\equiv1\pmod4$ prime and
+$1\le i\le\lfloor\sqrt p/2\rfloor$. Each firing certificate
+is checked against the exact identity
+$4xyz=p(xy+xz+yz)$. It also checks the equivalence of the two
+forms of the cofactor rule and records exact rational values of
+$\kappa_M$ and small large-sieve denominators. The computation
+finds the single cutoff failure $30241$ in this range.
+An early-terminating first-source census through $10^6$ finds
+the same single failure among $39{,}175$ primes congruent to
+one modulo four. These are finite ranges of verification.
+
+The proof of Proposition~\ref{prop:30241} gives an additional
+trial-division check independent of the smallest-factor table
+used in the larger census. The general factor-pair criterion is
+also replayed on the integers $2\le n\le300$.
+The executable checks and source files are available in the
+\href{https://github.com/anaxia-research/ErdosProblem1/tree/main/source-search}{research repository}.
+
+The source manuscript \cite{Romanov}, supplied as
+\texttt{fixed\_m\_proof.pdf}, provides the prime and cofactor
+rules, the fixed-depth and uniform estimates, and the arithmetic
+large-sieve proof. This version supplies a detailed Selberg
+quadratic-form lemma, records the explicit cutoff failure, and
+states the complete factor-pair search. An AI coding assistant was
+used for proof checking, computation, and manuscript preparation.
+
+\begin{thebibliography}{99}
+\bibitem{ET} C. Elsholtz and T. Tao,
+Counting the number of solutions to the Erd\H{o}s--Straus equation
+on unit fractions, \emph{J. Aust. Math. Soc.} 94 (2013), 50--105.
+\href{https://arxiv.org/abs/1107.1010v6}{arXiv:1107.1010v6}.
+\bibitem{Romanov} T. Romanov,
+\emph{Failure of the first $M$ sources: a sieve bound and its
+dependence on $M$}, circulated manuscript, November 2026,
+16 pages. Supplied to the project lead as \texttt{fixed\_m\_proof.pdf}.
+\bibitem{Richert} H.-E. Richert,
+\emph{Lectures on Sieve Methods}, notes by S. Srinivasan,
+Tata Institute of Fundamental Research, Bombay, 1976.
+\href{https://www.math.utoledo.edu/~codenth/Spring_13/3200/NT-books/Lectures_on_Sieve_Methods-Richert.pdf}{Lecture notes}.
+\bibitem{HR} H. Halberstam and H.-E. Richert,
+\emph{Sieve Methods}, Academic Press, London, 1974.
+\bibitem{Montgomery} H. L. Montgomery,
+The analytic principle of the large sieve,
+\emph{Bull. Amer. Math. Soc.} 84 (1978), 547--567.
+\href{https://doi.org/10.1090/S0002-9904-1978-14497-8}{doi:10.1090/S0002-9904-1978-14497-8}.
+\bibitem{IK} H. Iwaniec and E. Kowalski,
+\emph{Analytic Number Theory}, AMS Colloquium Publications 53,
+American Mathematical Society, Providence, 2004.
+\bibitem{RS} J. B. Rosser and L. Schoenfeld,
+Approximate formulas for some functions of prime numbers,
+\emph{Illinois J. Math.} 6 (1962), 64--94.
+\href{https://doi.org/10.1215/ijm/1255631807}{doi:10.1215/ijm/1255631807}.
+\bibitem{Vaughan} R. C. Vaughan,
+On a problem of Erd\H{o}s, Straus and Schinzel,
+\emph{Mathematika} 17 (1970), 193--198.
+\href{https://doi.org/10.1112/S0025579300002886}{doi:10.1112/S0025579300002886}.
+\bibitem{Dahan} B. Dahan,
+\emph{Sieve dimension and search depth for the Erd\H{o}s--Straus
+conjecture, $n\equiv1\pmod{24}$}, preprint, 2026.
+\href{https://arxiv.org/abs/2608.24035v2}{arXiv:2608.24035v2}.
+\bibitem{DahanComposite} B. Dahan,
+\emph{Composite witness sieves, Kneser--Plancherel containers,
+and the exponent $5/7$ for the Erd\H{o}s--Straus conjecture},
+preprint, 2026.
+\href{https://arxiv.org/abs/2611.08717v1}{arXiv:2611.08717v1}.
+\bibitem{Trybushnyi} D. Trybushnyi,
+\emph{The exponent $3/4$ for the exceptional sets of the equations
+$K/n=1/x+1/y+1/z$}, preprint, 2026.
+\href{https://arxiv.org/abs/2611.14167v1}{arXiv:2611.14167v1}.
+\bibitem{BB} D. Bhattacharjee and U. Bhattacharya,
+\emph{An explicit exponent for the exceptional set of the
+Erd\H{o}s--Straus equation}, manuscript, 29 October 2026.
+\href{https://github.com/anaxia-research/ErdosProblem1/blob/main/preprintErdosStrausExceptionalSet/ErdosStrausExceptionalSet.pdf}{Repository version}.
+\end{thebibliography}
+\end{document}

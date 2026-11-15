@@ -59,3 +59,23 @@ jobs:
             texlive-latex-base texlive-latex-recommended texlive-latex-extra \
             texlive-fonts-recommended texlive-publishers lmodern zip unzip
       - run: bash scripts/build_paper.sh
+      - name: Build the source-search manuscript
+        run: |
+          for pass in 1 2 3; do
+            pdflatex -interaction=nonstopmode -halt-on-error -output-directory=source-search source-search/main.tex
+          done
+          if grep -Eq 'undefined|Overfull' source-search/main.log; then
+            cat source-search/main.log
+            exit 1
+          fi
+
+  source-search:
+    name: Exact source certificates and finite census
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python checks/python/source_search.py --limit 200000 --report source-search/verification.json
+      - run: python checks/python/source_census.py --limit 1000000 --report source-search/million-census.json

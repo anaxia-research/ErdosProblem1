@@ -12,4 +12,7 @@ exceptional/paper/*.out
 exceptional/paper/*.toc
 exceptional/paper/main.pdf
 exceptional/paper/mainNotes.bib
+source-search/*.aux
+source-search/*.log
+source-search/*.out
 engine/deep_mc

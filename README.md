@@ -1,13 +1,16 @@
 # Erdős–Straus: an explicit exponent for the exceptional set and the Type II sieve sum
 
-Deep Bhattacharjee (corresponding author, [ORCID 0000-0003-0466-750X](https://orcid.org/0000-0003-0466-750X)) and Ushashi Bhattacharya ([ORCID 0009-0002-2254-3914](https://orcid.org/0009-0002-2254-3914)).
+Repository research by Deep Bhattacharjee (corresponding author, [ORCID 0000-0003-0466-750X](https://orcid.org/0000-0003-0466-750X)), Ushashi Bhattacharya ([ORCID 0009-0002-2254-3914](https://orcid.org/0009-0002-2254-3914)), and Tristan Romanov. The source-search paper below credits all three authors. The two earlier papers have their original two-author bylines.
 
 Contact: d.bhattacharjee@erl-forschung.de (corresponding), itsdeep@live.com; for questions about this repository, egspl@proton.me (GitHub [creelie](https://github.com/creelie)).
 
-The Erdős–Straus conjecture says that 4/n = 1/x + 1/y + 1/z has a solution in positive integers for every n ≥ 2. It is open, and neither paper here proves it.
+The Erdős–Straus conjecture says that 4/n = 1/x + 1/y + 1/z has a solution in positive integers for every n ≥ 2. The conjecture remains open.
+
+The [new source-search paper](source-search/main.pdf) develops Romanov’s sieve proof and records a pointwise obstruction. The prime 30241 has its first working source at 161, beyond the proposed square-root cutoff of 86. Its explicit unit-fraction solution and the exact finite verification appear in the paper. [LaTeX and reproducible checks](source-search/README.md)
 
 | Paper | PDF |
 |---|---|
+| Sieve bounds and search-depth obstructions for the Erdős–Straus equation — Deep Bhattacharjee, Ushashi Bhattacharya, Tristan Romanov | [source-search/main.pdf](source-search/main.pdf) |
 | An explicit exponent for the exceptional set of the Erdős–Straus equation | [`preprintErdosStrausExceptionalSet/ErdosStrausExceptionalSet.pdf`](preprintErdosStrausExceptionalSet/ErdosStrausExceptionalSet.pdf) |
 | A power-saving asymptotic for the two-parameter Type II sieve sum of the Erdős–Straus equation | [`preprintErdosStrausSieveConstant/ErdosStrausSieveConstant.pdf`](preprintErdosStrausSieveConstant/ErdosStrausSieveConstant.pdf) |
 

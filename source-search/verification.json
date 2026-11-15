@@ -1,0 +1,54 @@
+{
+  "scope": "Finite exact checks of source certificates and search reductions",
+  "prime_limit_exclusive": 200000,
+  "primes_1_mod_4": 8977,
+  "source_pairs_checked": 1289653,
+  "prime_divisor_rule_hits": 66205,
+  "cofactor_rule_hits_including_composites": 53513,
+  "square_root_search_failures": [
+    30241
+  ],
+  "first_sources_beyond_cutoff": [
+    {
+      "p": 30241,
+      "cutoff": 86,
+      "first_source": 161,
+      "d": 27,
+      "denominators": [
+        7567,
+        8520442,
+        1600414202
+      ]
+    }
+  ],
+  "maximum_first_source_among_cutoff_successes": {
+    "i": 53,
+    "p": 85009,
+    "d": 3
+  },
+  "first_witness_census_sha256": "acd89584e9f05ceadfbe4830334e633216473bdbae296414bb616da9003f01dc",
+  "bounded_search_survivors_when_depth_allows": {
+    "1": 1222,
+    "2": 497,
+    "3": 272,
+    "5": 71,
+    "10": 23,
+    "32": 2
+  },
+  "kappa_exact": {
+    "1": "1/2",
+    "2": "3/4",
+    "3": "1",
+    "5": "5/4",
+    "10": "5/3",
+    "32": "528827/221760",
+    "100": "294966446111/94605743232"
+  },
+  "large_sieve_L_exact": {
+    "10": "5/4",
+    "30": "38381/23760",
+    "100": "10982762692003/5589814950720",
+    "300": "40584822921998559676144915077788924533/16876017819512848333394247527071534800"
+  },
+  "general_three_term_search_checked_through": 300
+}

@@ -1,0 +1,24 @@
+{
+  "limit_exclusive": 1000000,
+  "primes_1_mod_4": 39175,
+  "square_root_cutoff_failures": [
+    {
+      "p": 30241,
+      "cutoff": 86,
+      "first_source": 161,
+      "d": 27,
+      "denominators": [
+        7567,
+        8520442,
+        1600414202
+      ]
+    }
+  ],
+  "maximum_first_source": [
+    161,
+    30241,
+    27
+  ],
+  "witness_sha256": "583bfe8160e18db2efeea3ac40f2fe968fe61f48f2cedff878cee54e99f95dc5",
+  "no_source_found_below_p": []
+}
