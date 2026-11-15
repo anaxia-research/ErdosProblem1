@@ -1,16 +1,16 @@
-# Erdős–Straus: an explicit exponent for the exceptional set and the Type II sieve sum
+# Erdős–Straus source searches and sieve estimates
 
-Repository research by Deep Bhattacharjee (corresponding author, [ORCID 0000-0003-0466-750X](https://orcid.org/0000-0003-0466-750X)), Ushashi Bhattacharya ([ORCID 0009-0002-2254-3914](https://orcid.org/0009-0002-2254-3914)), and Tristan Romanov. The source-search paper below credits all three authors. The two earlier papers have their original two-author bylines.
+Repository research by Deep Bhattacharjee (corresponding author, [ORCID 0000-0003-0466-750X](https://orcid.org/0000-0003-0466-750X)), Tristan Romanov, and Ushashi Bhattacharya ([ORCID 0009-0002-2254-3914](https://orcid.org/0009-0002-2254-3914)). The source-search paper below credits all three authors. The two earlier papers have their original two-author bylines.
 
 Contact: d.bhattacharjee@erl-forschung.de (corresponding), itsdeep@live.com; for questions about this repository, egspl@proton.me (GitHub [creelie](https://github.com/creelie)).
 
 The Erdős–Straus conjecture says that 4/n = 1/x + 1/y + 1/z has a solution in positive integers for every n ≥ 2. The conjecture remains open.
 
-The [new source-search paper](source-search/main.pdf) develops Romanov’s sieve proof and records a pointwise obstruction. The prime 30241 has its first working source at 161, beyond the proposed square-root cutoff of 86. Its explicit unit-fraction solution and the exact finite verification appear in the paper. [LaTeX and reproducible checks](source-search/README.md)
+The [AMS source-search paper](source-search/main.pdf) strengthens the growing-depth density estimate to every saving constant below 0.804900912498 and gives a complete complementary search within the specified Type I family. The prime 30241 has its first working source at 161, beyond the single square-root cutoff of 86; the auxiliary search captures it at 47. [Email attachment, LaTeX and reproducible checks](source-search/README.md)
 
 | Paper | PDF |
 |---|---|
-| Sieve bounds and search-depth obstructions for the Erdős–Straus equation — Deep Bhattacharjee, Ushashi Bhattacharya, Tristan Romanov | [source-search/main.pdf](source-search/main.pdf) |
+| Stronger sieve bounds and complete Type I source searches for the Erdős–Straus equation — Deep Bhattacharjee, Tristan Romanov, Ushashi Bhattacharya | [PDF](source-search/main.pdf) · [Email-ready TeX archive](source-search/erdosmdpitex.zip) |
 | An explicit exponent for the exceptional set of the Erdős–Straus equation | [`preprintErdosStrausExceptionalSet/ErdosStrausExceptionalSet.pdf`](preprintErdosStrausExceptionalSet/ErdosStrausExceptionalSet.pdf) |
 | A power-saving asymptotic for the two-parameter Type II sieve sum of the Erdős–Straus equation | [`preprintErdosStrausSieveConstant/ErdosStrausSieveConstant.pdf`](preprintErdosStrausSieveConstant/ErdosStrausSieveConstant.pdf) |
 
@@ -18,7 +18,7 @@ The [new source-search paper](source-search/main.pdf) develops Romanov’s sieve
 
 Let E(N) be the set of n ≤ N for which the equation has no solution. Vaughan proved in 1970 that |E(N)| ≪ N exp(−c (log N)^{2/3}) for some c > 0, and his argument gives no value of c. For the primes in E(N), which all satisfy n ≡ 1 (mod 24), Dahan's sieve ([arXiv:2608.24035](https://arxiv.org/abs/2608.24035)) gives c = 0.065, and c = 0.0943 with the constant 9/(2π²) of its sieve sum found by Liu.
 
-For the same primes T. Newton ([doi:10.5281/zenodo.23760689](https://doi.org/10.5281/zenodo.23760689)) studies the exact divisor tests attached to a prescribed first denominator: his finite menu of Type II congruences covers 25651/26496 of their reduced residue classes. His families are classes to fixed moduli, so they leave the exponent unchanged; the paper here sieves with classes to moduli that grow with N.
+For the same primes T. Newton studies the exact divisor tests attached to a prescribed first denominator: his finite menu of Type II congruences covers 25651/26496 of their reduced residue classes. His families are classes to fixed moduli, so they leave the exponent unchanged; the paper here sieves with classes to moduli that grow with N.
 
 **Theorem A.** For every ε > 0 and all large N,
 
@@ -34,7 +34,7 @@ Numerically 𝒥 = 0.0003, and a Monte Carlo simulation gives 𝒦 ≈ 0.0138 an
 
 The factorisations (p + 1)/4 = uaα fill a triangle. Its three corners, where one product of two variables is at most √p, give the classes that the Bombieri–Vinogradov theorem can count; each corner has a normal form of the class (u/a, 4u²α or (4a²α)⁻¹) that separates its classes, and the corners alone give exactly c₀ (Theorem B). The gain to c₁ comes from the centre of the triangle, where u, a and α are all below √P. Its classes are distinct and agree with no class of the corner A, and with B or C only along one explicit family whose contribution converges. Three strips of the centre along the corners, of depth 1/42, are counted with Maynard's theorem on primes in progressions to large moduli (Mem. AMS 306 (2025), no. 1542), using a rule that finds a divisor of the modulus in Maynard's range; 𝒥 measures the pairs where the rule fails. With every triple of the strips the constant would be 0.6797. Behind the strips, from depth 1/42 to depth 1/10, Maynard's second theorem (primes in progressions to moduli up to p^{3/5}, Mem. AMS 306 (2025), no. 1543) counts the pairs whose modulus splits into three factors of suitable sizes; the large prime factors are placed in three groups and the small ones fill two of them to prescribed sizes. No splitting exists beyond depth 1/10, which is the level p^{3/5}. These deep strips add 6𝒦 to the share and take c₁ past 0.6797. With the whole centre (which needs the Elliott–Halberstam conjecture) the constant would be 0.7273.
 
-The construction was selected by the engine Anaxia of the BLLM project in three runs: with version 3.0.5 ([doi:10.5281/zenodo.23469389](https://doi.org/10.5281/zenodo.23469389)) the corners among 128 constructions and the strips among 37, and with version 3.1.0 ([doi:10.5281/zenodo.23484160](https://doi.org/10.5281/zenodo.23484160)) the splitting of the moduli in the deep strips among 15; the records are in `engine/`.
+The construction was selected by the engine Anaxia of the BLLM project in three runs: with version 3.0.5 the corners among 128 constructions and the strips among 37, and with version 3.1.0 the splitting of the moduli in the deep strips among 15; the records are in `engine/`.
 
 ## The Type II sieve sum
 
@@ -46,7 +46,7 @@ proved W(J) ≥ (3/(2π²) + o(1)) (log J)², and asked for W(J) ≥ (0.45 + o(1
 
 **Theorem.** W(J) = κ((log J + γ + T)² + M) + O(J^{-1/2} log J), with κ = 9/(2π²) = 0.4559453…, T = 0.3131549610… and M = −1.0429405079…, both given by explicit sums over primes.
 
-The first two terms, κ(log J)² and 2κ(γ + T) log J with an error O(1), were found earlier by Z. Liu ([doi:10.5281/zenodo.22650516](https://doi.org/10.5281/zenodo.22650516)), who also derived the exponent 0.0943 for Dahan's bound. The theorem adds the constant term κ((γ + T)² + M) = −0.1140687011… and the error O(J^{-1/2} log J).
+The first two terms, κ(log J)² and 2κ(γ + T) log J with an error O(1), were found earlier by Z. Liu, who also derived the exponent 0.0943 for Dahan's bound. The theorem adds the constant term κ((γ + T)² + M) = −0.1140687011… and the error O(J^{-1/2} log J).
 
 ## Contents
 
@@ -68,18 +68,17 @@ Every Lean theorem depends at most on the axioms propext, Classical.choice and Q
 
 To rerun everything: `bash scripts/run_all.sh` (Lean through elan; the engine step installs Anaxia from [creelie/eBLLM](https://github.com/creelie/eBLLM) at tag v3.0.5 in a virtual environment).
 
-## Releases
+## Version history
 
-Every release is archived on Zenodo. The concept DOI [10.5281/zenodo.23480292](https://doi.org/10.5281/zenodo.23480292) always resolves to the latest version.
 
-| Version | Content | DOI |
-|---|---|---|
-| 4.0.1 | two corrections in the appendix: the error term of the hyperbola sum (Appendix A.2) and the bound for the small variables in Case (ii) of Appendix A.5; theorems and constants unchanged | [10.5281/zenodo.23770866](https://doi.org/10.5281/zenodo.23770866) |
-| 4.0.0 | the deep strips through Maynard's second theorem: certified c₁ > 0.6931, Monte Carlo c₁ ≈ 0.7015 (Section 7, Appendix A.11, final inequality in Lean) | [10.5281/zenodo.23764189](https://doi.org/10.5281/zenodo.23764189) |
-| 3.1.0 | the certified bound c₁ > 0.67916 (Appendix A.8, final inequality in Lean) | [10.5281/zenodo.23486200](https://doi.org/10.5281/zenodo.23486200) |
-| 3.0.0 | Theorem A with the centre and Maynard's strips: c₁ = 0.6792, at least 0.66571 in closed form | [10.5281/zenodo.23483694](https://doi.org/10.5281/zenodo.23483694) |
-| 2.0.0 | the exceptional-set paper with c₀ = 0.6607886973 from the three corners | [10.5281/zenodo.23480673](https://doi.org/10.5281/zenodo.23480673) |
-| 1.0.0 | the sieve-sum paper | [10.5281/zenodo.23480293](https://doi.org/10.5281/zenodo.23480293) |
+| Version | Content |
+|---|---|
+| 4.0.1 | two corrections in the appendix: the error term of the hyperbola sum (Appendix A.2) and the bound for the small variables in Case (ii) of Appendix A.5; theorems and constants unchanged |
+| 4.0.0 | the deep strips through Maynard's second theorem: certified c₁ > 0.6931, Monte Carlo c₁ ≈ 0.7015 (Section 7, Appendix A.11, final inequality in Lean) |
+| 3.1.0 | the certified bound c₁ > 0.67916 (Appendix A.8, final inequality in Lean) |
+| 3.0.0 | Theorem A with the centre and Maynard's strips: c₁ = 0.6792, at least 0.66571 in closed form |
+| 2.0.0 | the exceptional-set paper with c₀ = 0.6607886973 from the three corners |
+| 1.0.0 | the sieve-sum paper |
 
 ## License
 

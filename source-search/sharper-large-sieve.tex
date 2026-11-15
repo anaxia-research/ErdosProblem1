@@ -1,0 +1,258 @@
+\subsection{The two reciprocal-totient sums}
+The prime and cofactor witnesses contribute equally to the leading
+logarithmic mass. The following two estimates make that equality
+explicit.
+
+\begin{lemma}\label{lem:totient-three}
+For $x\ge2$,
+\[
+ \sum_{\substack{m\le x\\m\equiv3\pmod4}}\frac1{\varphi(m)}
+       =\frac{C_*}{2}\log x+O(1).
+\]
+\end{lemma}
+\begin{proof}
+Let $\chi$ be the nonprincipal character modulo four. The identity
+\[
+ \frac{n}{\varphi(n)}
+   =\sum_{d\mid n}\frac{\mu^2(d)}{\varphi(d)}
+\]
+gives
+\[
+ H_{\rm odd}(x):=\sum_{\substack{n\le x\\n\ {\rm odd}}}
+                      \frac1{\varphi(n)}
+ =\sum_{\substack{d\le x\\d\ {\rm odd}}}
+    \frac{\mu^2(d)}{d\varphi(d)}
+    \sum_{\substack{k\le x/d\\k\ {\rm odd}}}\frac1k .
+\]
+The inner sum is $\frac12\log(x/d)+O(1)$ uniformly for $x/d\ge1$.
+The coefficient sums
+\[
+ \sum_{d\ge1}\frac{\mu^2(d)}{d\varphi(d)}
+ \quad\hbox{and}\quad
+ \sum_{d\ge1}\frac{\mu^2(d)\log d}{d\varphi(d)}
+\]
+converge, using the elementary bound
+$\varphi(d)\ge\sqrt{d/2}$.\footnote{For an odd prime power
+$\ell^a$, $\varphi(\ell^a)/\sqrt{\ell^a}
+=\ell^{a/2-1}(\ell-1)\ge1$.
+For powers of two the ratio is at least $1/\sqrt2$.
+Multiply these inequalities over the prime powers dividing $d$.}
+The tail of the first sum multiplied by $\log x$
+is bounded. It follows that
+\[
+ H_{\rm odd}(x)
+ =\frac{\log x}{2}
+   \prod_{\ell>2}\left(1+\frac1{\ell(\ell-1)}\right)+O(1)
+ =C_*\log x+O(1).
+\]
+The product runs over primes and its coefficient equals $C_*$
+because the missing prime-two factor in
+$\prod_\ell(1+1/(\ell(\ell-1)))$ is $3/2$.
+
+The same divisor identity, multiplied by $\chi(n)$, gives
+\[
+ \sum_{n\le x}\frac{\chi(n)}{\varphi(n)}
+ =\sum_{d\le x}\frac{\mu^2(d)\chi(d)}{d\varphi(d)}
+                \sum_{k\le x/d}\frac{\chi(k)}k=O(1).
+\]
+Indeed the character harmonic partial sums are uniformly bounded,
+by summation by parts and the bounded partial sums of $\chi$,
+and the outer coefficient sum converges absolutely.
+For odd $m$, the indicator of $m\equiv3\pmod4$ is
+$(1-\chi(m))/2$. Combining these two estimates proves the lemma.
+\end{proof}
+
+\begin{lemma}\label{lem:totient-even}
+For $x\ge2$,
+\[
+ \sum_{\substack{i\le x\\i\ {\rm even}}}\frac1{\varphi(4i)}
+       =\frac{C_*}{2}\log x+O(1).
+\]
+\end{lemma}
+\begin{proof}
+Write $i=2^a j$ with $a\ge1$ and $j$ odd. Since
+$\varphi(4i)=2^{a+1}\varphi(j)$, the preceding proof gives
+\[
+ \sum_{\substack{i\le x\\i\ {\rm even}}}\frac1{\varphi(4i)}
+ =\sum_{1\le a\le\log_2x}2^{-a-1}
+       \bigl(C_*\log(x/2^a)+O(1)\bigr).
+\]
+The sums of $2^{-a-1}$ and $a2^{-a-1}$ over $a\ge1$
+are $1/2$ and a finite constant respectively.
+Extending these geometric sums to infinity changes the expression
+by $O(1)$, proving the claim.
+\end{proof}
+
+\subsection{A uniform mass bound on fixed logarithmic intervals}
+Set $w_f=\omega(f)/f$ for odd primes $f$.
+\begin{lemma}\label{lem:short-block-mass}
+For every $0<c<C_*/2$, all sufficiently small fixed $\delta>0$
+have the following property. There is an integer $J\ge1$ such that
+\begin{equation}\label{eq:log-block-mass}
+ \sum_{\substack{f\ {\rm prime}\\
+          e^{\delta j}<f\le e^{\delta(j+1)}}}w_f\ge c\delta
+ \qquad(j\ge J).
+\end{equation}
+The parameters $c,\delta,J$ are fixed before the limit in $Q$.
+\end{lemma}
+\begin{proof}
+Fix $0<\theta<1/2$ and put $D=\lfloor t^\theta\rfloor$.
+For $t<f\le e^\delta t$, count the following divisors of $f+1$.
+
+First count $m\le D$ with $m\equiv3\pmod4$ and
+$f\equiv-1\pmod m$. Then count the divisors $m=(f+1)/i$
+arising from even $i\le D$ and
+\[
+ f\equiv-1-i\pmod{4i}.
+\]
+The latter congruence gives $m\equiv3\pmod4$.
+Moreover $m>t^{1-\theta}>D$, so the second collection is
+disjoint from the first, and distinct $i$ give distinct divisors.
+
+The residues $-1\pmod m$ and $-1-i\pmod{4i}$ are reduced,
+the latter because $i$ is even.
+Bombieri--Vinogradov, applied at both endpoints and with its
+maximum over reduced residue classes, gives
+\begin{align*}
+ &\sum_{t<f\le e^\delta t}\omega(f)\\
+ &\quad\ge
+  \bigl(\li(e^\delta t)-\li(t)\bigr)
+  \left(
+     \sum_{\substack{m\le D\\m\equiv3\ (4)}}\frac1{\varphi(m)}
+     +\sum_{\substack{i\le D\\i\ {\rm even}}}
+                                    \frac1{\varphi(4i)}
+  \right)
+  +O_{\theta,\delta}\bigl(t/(\log t)^2\bigr).
+\end{align*}
+Every modulus is at most $4t^\theta$, which lies below the usual
+level $t^{1/2}(\log t)^{-A}$ for sufficiently large $t$.
+The sign of the error above is immaterial to this lower bound.
+
+Lemmas~\ref{lem:totient-three} and~\ref{lem:totient-even}
+make the parenthesis $C_*\theta\log t+O(1)$.
+For fixed $\delta$, the logarithmic integral difference is
+$(e^\delta-1)t/\log t+O_\delta(t/(\log t)^2)$.
+Since $1/f\ge e^{-\delta}/t$ on the interval, we obtain
+\begin{equation}\label{eq:short-block-prelimit}
+ \sum_{t<f\le e^\delta t}w_f
+ \ge C_*\theta(1-e^{-\delta})-o_{\theta,\delta}(1).
+\end{equation}
+Choose $\theta$ so that $c<C_*\theta<C_*/2$.
+As $\delta$ tends to zero,
+$C_*\theta(1-e^{-\delta})/\delta$ tends to $C_*\theta$.
+Thus every sufficiently small fixed $\delta$ makes that quotient
+strictly greater than $c$. For that choice, take $t=e^{\delta j}$
+and then $J$ sufficiently large to absorb the error uniformly for
+all $j\ge J$. This proves \eqref{eq:log-block-mass}.
+\end{proof}
+
+\subsection{Products from distinct logarithmic blocks}
+The use of distinct prime blocks gives a direct lower bound for
+the large-sieve denominator without repeated prime factors.
+
+\begin{proposition}\label{prop:sharper-L}
+One has
+\begin{equation}\label{eq:sharper-L}
+ \liminf_{Q\to\infty}\frac{\log L(Q)}{\sqrt{\log Q}}
+       \ge\sqrt{2C_*}.
+\end{equation}
+Equivalently,
+$\log L(Q)\ge(\sqrt{2C_*}-o(1))\sqrt{\log Q}$.
+\end{proposition}
+\begin{proof}
+Fix $0<c<C_*/2$ and $0<\eps<1$. Choose a fixed $\delta>0$
+small enough for Lemma~\ref{lem:short-block-mass} and for
+$c\delta<\eps$. Let $J$ be its threshold.
+Put
+\[
+ U=\log Q,\qquad
+ k=\left\lfloor\sqrt{c(1-\eps)U}\right\rfloor,\qquad
+ R=\lfloor U/\delta\rfloor-k(J+1)-\frac{k(k-1)}2.
+\]
+For sufficiently large $Q$, the integer $R$ is positive.
+Choose $k$ distinct block indices
+$J\le j_1<\cdots<j_k$ and one prime from each chosen block.
+Their product is at most $Q$ whenever
+$\delta\sum_{r=1}^k(j_r+1)\le U$.
+The primes are distinct, and unique factorization assigns every
+resulting squarefree integer to just one set of prime factors
+and just one set of blocks.
+
+Write
+\[
+ j_r=J+(r-1)+b_r,\qquad 0\le b_1\le\cdots\le b_k .
+\]
+It suffices that $\sum b_r\le R$. There are
+$\binom{R+k}{k}$ ordered nonnegative integer vectors with
+coordinate sum at most $R$. Sorting sends them to nondecreasing
+vectors with at most $k!$ preimages for each sorted vector.
+Therefore at least $\binom{R+k}{k}/k!$ block selections satisfy
+the product condition. In $L(Q)$ the prime factor weight is
+$\omega(f)/(f-\omega(f))\ge w_f$.
+Summing independently over one prime in each selected block
+and applying \eqref{eq:log-block-mass} gives
+\begin{equation}\label{eq:distinct-block-bound}
+ L(Q)\ge (c\delta)^k\frac{\binom{R+k}{k}}{k!}
+       \ge\frac{(c\delta R)^k}{(k!)^2}.
+\end{equation}
+Here the second inequality follows by expanding the binomial
+coefficient as $\prod_{r=1}^k(R+r)/r$.
+
+Our choices imply
+\[
+ \delta R
+ \ge U-\delta-\delta k(J+1)-\frac{\delta k(k-1)}2
+ \ge (1-\eps)U
+\]
+for all sufficiently large $Q$.
+Indeed the triangular term is at most $\eps U/2$, and the
+other losses are $O_{c,\delta,J,\eps}(\sqrt U)$.
+Set $B=c(1-\eps)U$. Then $k=\lfloor\sqrt B\rfloor$ and
+\eqref{eq:distinct-block-bound}, followed by Stirling's formula,
+gives
+\[
+ \log L(Q)\ge k\log B-2\log(k!)
+ \ge 2\sqrt{c(1-\eps)U}-O_{c,\eps}(\log U).
+\]
+Taking a limit inferior first, and then letting $c$ increase
+to $C_*/2$ and $\eps$ decrease to zero, proves the result.
+\end{proof}
+
+\subsection{The saving for square-root search depth}
+We now complete the growing-depth conclusion of
+Theorem~\ref{thm:large} with the strengthened constant.
+Discard primes $p\le\sqrt X$ and use dyadic intervals $(Y/2,Y]$
+for the rest. Put
+\[
+ M_Y=\lfloor\sqrt{Y/2}/2\rfloor,\qquad Q=3M_Y-1.
+\]
+Then $M(p)\ge M_Y$ in the interval,
+$Q^2\le9Y/8$, and $\log Q=\frac12\log Y+O(1)$.
+For any fixed $0<a<\sqrt{C_*}$,
+Proposition~\ref{prop:sharper-L} and the arithmetic
+large-sieve inequality therefore give
+\[
+ \#\{Y/2<p\le Y:p\in\bigcap_{i\le M(p)}F_i\}
+       \ll_a Y\exp(-a\sqrt{\log Y}).
+\]
+For $Y=X/2^j$, use
+\[
+ \sqrt{\log X-j\log2}
+ \ge\sqrt{\log X}-\frac{j\log2}{\sqrt{\log X}}
+\]
+whenever $0\le j\log2\le\log X$.
+The dyadic sum is bounded by $Xe^{-a\sqrt{\log X}}$
+times a geometric series of bounded sum for sufficiently large
+$X$. The discarded $O(\sqrt X)$ primes are absorbed. We obtain
+\begin{equation}\label{eq:sharper-sqrt}
+ E_{\sqrt{\ }}(X)\ll_a X\exp(-a\sqrt{\log X})
+ \qquad(0<a<\sqrt{C_*}).
+\end{equation}
+The threshold furnished here is
+\[
+ \sqrt{C_*}=0.804900912498\ldots,\qquad
+ \sqrt{2C_*}=1.138301786821\ldots .
+\]
+It concerns the failure of the stated source budget. The following
+pointwise analysis records an explicit failure of that budget
+and the exact finite search needed for the full equation.

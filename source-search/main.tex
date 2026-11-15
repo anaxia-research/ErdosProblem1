@@ -1,9 +1,12 @@
-\documentclass[11pt]{article}
+\documentclass[11pt,a4paper]{amsart}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[a4paper,margin=26mm]{geometry}
-\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype,graphicx}
 \usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\usepackage{needspace}
+\usepackage[foot]{amsaddr}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -15,34 +18,41 @@
 \newcommand{\EE}{\mathcal E}
 \newcommand{\NN}{\mathbb N}
 \newcommand{\eps}{\varepsilon}
-\hypersetup{pdfauthor={Deep Bhattacharjee, Ushashi Bhattacharya, Tristan Romanov},
- pdftitle={Sieve bounds and search-depth obstructions for the Erdos-Straus equation}}
-\title{Sieve bounds and search-depth obstructions\\
-for the Erd\H{o}s--Straus equation}
-\author{Deep Bhattacharjee \and Ushashi Bhattacharya \and Tristan Romanov}
+\hypersetup{pdfauthor={Deep Bhattacharjee, Tristan Romanov, Ushashi Bhattacharya},
+ pdftitle={Stronger Sieve Bounds and Complete Type I Source Searches for the Erdos-Straus Equation}}
+\title[Type I source searches for the Erd\H{o}s--Straus equation]{Stronger sieve bounds and complete Type~I source searches for the Erd\H{o}s--Straus equation}
+\author[D. Bhattacharjee]{Deep Bhattacharjee}
+\address[Deep Bhattacharjee]{Formerly, Electro-Gravitational Space Propulsion Laboratory
+(EGSPL), Bhubaneswar, Odisha 751030, India; Formerly, University of
+Calcutta (Heramba Chandra College), 23/49 Gariahat Road, Golpark,
+Kolkata 700029, West Bengal, India}
+\email{egspl@proton.me}
+\thanks{Corresponding author: Deep Bhattacharjee, egspl@proton.me.
+ORCID: Deep Bhattacharjee,
+\href{https://orcid.org/0000-0003-0466-750X}{0000-0003-0466-750X};
+Ushashi Bhattacharya,
+\href{https://orcid.org/0009-0002-2254-3914}{0009-0002-2254-3914}.}
+\author[T. Romanov]{Tristan Romanov}
+\address[Tristan Romanov]{Independent Researcher, San Francisco, CA, USA}
+\author[U. Bhattacharya]{Ushashi Bhattacharya}
+\address[Ushashi Bhattacharya]{Formerly, National Taiwan University, Taipei 106319, Taiwan}
+\subjclass[2020]{11D68, 11N36}
+\keywords{Egyptian fractions, Type I solutions, arithmetic large sieve,
+search depth, reciprocal totient sums}
 \date{15 November 2026}
 \begin{document}
-\maketitle
 \begin{abstract}
-For a prime $p\equiv1\pmod4$, consider the Type~I source indexed by $i$
-which succeeds when some divisor $d\mid p+i$ satisfies
-$d\equiv3\pmod4$ and $p+d\equiv0\pmod{4i}$. We prove an upper bound
-$O_M(X(\log X)^{-1-\kappa_M})$ for primes where the first $M$ sources
-fail, with $\kappa_M=\sum_{i\le M}1/\varphi(4i)\sim
-\zeta(2)\zeta(3)\log M/(3\zeta(6))$. We make its dependence on $M$
-uniform up to $(\log X)/5$. A cofactor certificate produces fixed
-residue classes and an arithmetic large-sieve estimate
-$O(X\exp(-a\sqrt{\log X}))$ for failures through
-$\lfloor\sqrt p/2\rfloor$, for every $a<0.16$.
-Exact checks exhibit $p=30241$ as a failure of that cutoff,
-whose first source is $161$. The associated unit-fraction identity
-and a complete factor-pair criterion describe the pointwise task
-left by these density estimates.
+We study failures of a Type~I source search for the Erd\H{o}s--Straus
+equation. At depth $M$, the sieve exponent is
+$\sum_{i\le M}1/\varphi(4i)$, with a uniform bound for
+$M\le(\log X)/5$. At square-root depth, the failure count is
+$O_a(Xe^{-a\sqrt{\log X}})$ for every $a<0.8049009$.
+The prime $30241$ requires a source beyond this cutoff.
+A complementary search in the auxiliary parameter finds every
+witness in the specified family within explicit finite bounds.
+Universal nonemptiness remains open.
 \end{abstract}
-\noindent\textit{2020 Mathematics Subject Classification.}
-11D68, 11N35, 11N36.\\
-\textit{Keywords.} Egyptian fractions, Type~I solutions, arithmetic large
-sieve, search depth, reciprocal totient sums.
+\maketitle
 
 \section{Introduction and results}
 The Erd\H{o}s--Straus conjecture asks for positive integers $x,y,z$ with
@@ -78,15 +88,17 @@ Write
 \]
 The parameter $M(p)$ is a specified search budget.
 
-The sieve proofs develop the source analysis in Romanov's circulated
-manuscript \cite{Romanov}. The congruences \eqref{eq:source} are
+The two source certificates lead to complementary small-sieve and
+arithmetic large-sieve estimates.\footnote{Tristan Romanov contributed
+the initial source certificates and sieve analysis. The present
+version also develops the distinct-block denominator estimate and
+the complete complementary parameter search.}
+The congruences \eqref{eq:source} are
 Yamamoto's Type~I congruence family with parameter $a=1$, in the
 classification of Elsholtz and Tao \cite[Proposition~1.9]{ET}.
 They provide a more restricted search than the full set of
-unit-fraction solutions. Dahan's two-parameter Type~II search
-\cite{Dahan} and the companion work of Bhattacharjee and Bhattacharya
-\cite{BB} concern other witness sets.
-Our count $E_{\sqrt{\ }}(X)$ records failure of the specified Type~I
+unit-fraction solutions. Dahan's two-parameter Type~II search \cite{Dahan} concerns another
+witness set. Our count $E_{\sqrt{\ }}(X)$ records failure of the specified Type~I
 budget, including the explicit prime in Section~\ref{sec:pointwise}.
 
 Here and below $\log$ is natural, and constants implicit in $O_B$ or
@@ -134,17 +146,17 @@ If $I$ contains $N$ consecutive integers and $Q\ge2$, then
        p\in\bigcap_{i\le\lfloor(Q+1)/3\rfloor} F_i\}
  \le\frac{N+Q^2}{L(Q)}.
 \]
-Furthermore, with $c_1=1/(40\log2)$,
+Furthermore,
 \begin{equation}\label{eq:L}
- \log L(Q)\ge(2\sqrt{c_1/e}-o(1))\sqrt{\log Q}.
+ \log L(Q)\ge(\sqrt{2C_*}-o(1))\sqrt{\log Q}.
 \end{equation}
-Consequently, for every $a<0.16$,
+Consequently, for every $0<a<\sqrt{C_*}$,
 \begin{equation}\label{eq:sqrt}
  E_{\sqrt{\ }}(X)\ll_a X\exp(-a\sqrt{\log X}).
 \end{equation}
 \end{theorem}
-The constant before $\sqrt{\log X}$ furnished by the proof can be
-any value smaller than $\sqrt{2c_1/e}>0.16$.
+The admissible threshold is $\sqrt{C_*}=0.804900912498\ldots$.
+All limiting choices in this estimate are fixed before $X$ tends to infinity.
 
 Vaughan's classical bound for actual insoluble integers has exponent
 $2/3$ \cite{Vaughan}. Recent preprints report further estimates on
@@ -280,7 +292,8 @@ $(d_1,d_2)$ with $[d_1,d_2]=d$. Bounding their remainder
 contributions with $|\lambda_d|\le1$ proves the result.
 \end{proof}
 This is the usual Selberg quadratic-form argument
-\cite[Chapter~9]{Richert}, stated here to keep its constants in $M$ visible.
+\cite[Chapter~9]{Richert}, also developed in \cite{HR}.
+We include the finite form to keep its constants in $M$ visible.
 
 \section{Proof at logarithmic depth}
 Set
@@ -417,7 +430,7 @@ Lemma~\ref{lem:kappa} gives $\kappa_M=C_*\log\log X+O(1)$.
 Apply \eqref{eq:uniform}, then choose fixed $B$ arbitrarily large
 to obtain the stated exponent. Small primes are absorbed.
 
-\section{The arithmetic large sieve}
+\section{The arithmetic large sieve}\label{sec:arithmeticsieve}
 The arithmetic form of the large sieve \cite{Montgomery,IK} states
 that a set of integers in an interval containing $N$ integers
 which avoids $\omega(f)<f$ residues at each prime $f\le Q$ has
@@ -430,74 +443,7 @@ Lemma~\ref{lem:classes} supplies precisely those fixed forbidden
 residues for our failure set, proving the first assertion of
 Theorem~\ref{thm:large}.
 
-\begin{lemma}\label{lem:mass}
-For $S(y)=\sum_{\sqrt y<f\le y}\omega(f)/f$ one has
-$S(y)\ge(c_1-o(1))\log y$ with $c_1=1/(40\log2)$.
-\end{lemma}
-\begin{proof}
-On a dyadic interval $(t,2t]$, count only divisors
-$m\le t^{2/5}$ with $m\equiv3\pmod4$. Bombieri--Vinogradov gives
-\[
- \sum_{m\le t^{2/5}}\left|
- \pi(2t;m,-1)-\pi(t;m,-1)
- -\frac{\li(2t)-\li(t)}{\varphi(m)}\right|
- \ll t/(\log t)^2.
-\]
-This follows from its usual level $t^{1/2}(\log t)^{-A}$
-by taking $t$ sufficiently large. Further,
-\[
- \sum_{\substack{m\le t^{2/5}\\m\equiv3\ (4)}}\frac1{\varphi(m)}
- \ge\sum_{\substack{m\le t^{2/5}\\m\equiv3\ (4)}}\frac1m
- \ge\frac1{10}\log t-O(1).
-\]
-Using $1/f\ge1/(2t)$ and
-$\li(2t)-\li(t)\ge t/\log(2t)$ shows
-$\sum_{t<f\le2t}\omega(f)/f\ge1/20-o(1)$.
-There are $(\log y)/(2\log2)+O(1)$ disjoint such intervals
-in $(\sqrt y,y]$, and their errors tend to zero uniformly
-as their least endpoint tends to infinity. This gives the claim.
-\end{proof}
-
-\begin{proof}[Proof of \eqref{eq:L}]
-Put $w_f=\omega(f)/f$ on $\sqrt y<f\le y$.
-The divisor bound $\omega(f)\le\tau(f+1)\ll f^{1/8}$ gives
-\[
- T(y)=\sum_{\sqrt y<f\le y}w_f^2\ll y^{-1/3}.
-\]
-If $k\ge2$ and $y^k\le Q$, products of $k$ distinct primes
-in the interval contribute to $L(Q)$. Expanding $S(y)^k$,
-the total of ordered tuples with a repeated prime is at most
-$\binom k2T(y)S(y)^{k-2}$ by assigning a repeated pair.
-It follows that
-\[
- L(Q)\ge\frac{S(y)^k-\binom k2T(y)S(y)^{k-2}}{k!}.
-\]
-Choose $\lambda=\sqrt{e/c_1}$, $\log y=\lambda\sqrt{\log Q}$,
-and $k=\lfloor\log Q/\log y\rfloor$. Then
-$\binom k2T(y)/S(y)^2=o(1)$ and
-$eS(y)/k\ge e^2-o(1)$.
-Stirling's formula yields
-\[
- \log L(Q)\ge k\log(eS(y)/k)-O(\log k)
- \ge (2/\lambda-o(1))\sqrt{\log Q}.
-\]
-\end{proof}
-
-To obtain \eqref{eq:sqrt}, discard $p\le\sqrt X$ and partition
-the rest into dyadic intervals $(Y/2,Y]$.
-Set $M_Y=\lfloor\sqrt{Y/2}/2\rfloor$ and $Q=3M_Y-1$.
-Then $M(p)\ge M_Y$, $Q^2\le9Y/8$, and
-$\log Q=\frac12\log Y+O(1)$.
-The interval bound and \eqref{eq:L} give
-$O_a(Y e^{-a\sqrt{\log Y}})$ for every
-$a<\sqrt{2c_1/e}$.
-For $Y=X/2^j$ and $j\log2\le\frac12\log X+O(1)$,
-\[
- \sqrt{\log X-j\log2}
- \ge\sqrt{\log X}-\frac{j\log2}{\sqrt{\log X}}.
-\]
-Summing the resulting geometric series gives
-$O_a(Xe^{-a\sqrt{\log X}})$, proving the theorem.
+\input{source-search/sharper-large-sieve.tex}
 
 \section{The pointwise problem and an exact obstruction}\label{sec:pointwise}
 \begin{proposition}[A depth failure]\label{prop:30241}
@@ -519,21 +465,8 @@ standalone integer computation. It tests primality and every
 divisor of each of the $160$ shifted integers, using a factor pair
 to avoid searching above the square root.
 \end{proof}
-\begin{verbatim}
-from math import isqrt
-p = 30241
-assert all(p % d for d in range(2, isqrt(p) + 1))
-for i in range(1, 161):
-    n = p + i
-    for q in range(1, isqrt(n) + 1):
-        if n % q == 0:
-            for d in (q, n // q):
-                assert d % 4 != 3 or (p + d) % (4 * i) != 0
-i, d = 161, 27
-k, A = (p + d) // (4 * i), (p + i) // d
-x, y, z = i*k, i*k*A, p*k*A
-assert 4*x*y*z == p*(x*y + x*z + y*z)
-\end{verbatim}
+The standalone verification is reproduced in Appendix~\ref{app:certificate}.
+
 This prime identifies an explicit limitation of the square-root
 budget itself. It also gives a concrete member of the failure set
 to which Theorem~\ref{thm:large} applies.
@@ -587,6 +520,8 @@ $Xe^{-a\sqrt{\log X}}$ grows without bound.
 A probabilistic survival model would need an independently
 justified arithmetic statement to reach the pointwise conclusion.
 
+\input{source-search/two-channel.tex}
+
 \section{Exact computation and provenance}
 The standard-library program
 \texttt{checks/python/source\_search.py}
@@ -609,23 +544,122 @@ also replayed on the integers $2\le n\le300$.
 The executable checks and source files are available in the
 \href{https://github.com/anaxia-research/ErdosProblem1/tree/main/source-search}{research repository}.
 
-The source manuscript \cite{Romanov}, supplied as
-\texttt{fixed\_m\_proof.pdf}, provides the prime and cofactor
-rules, the fixed-depth and uniform estimates, and the arithmetic
-large-sieve proof. This version supplies a detailed Selberg
+The initial source analysis provides the prime and cofactor rules,
+the fixed-depth and uniform estimates, and the starting arithmetic
+large-sieve argument. This version supplies a detailed Selberg
 quadratic-form lemma, records the explicit cutoff failure, and
-states the complete factor-pair search. An AI coding assistant was
-used for proof checking, computation, and manuscript preparation.
+states the complete factor-pair search. The distinct-block argument
+in Section~\ref{sec:arithmeticsieve} strengthens the growing-depth
+constant, and Theorem~\ref{thm:twochannel} completes the finite
+source-family decision procedure.
+
+
+\appendix
+\section{An exact certificate for the cutoff failure}\label{app:certificate}
+The following program uses trial division and integer arithmetic.
+It checks that $30241$ is prime, that every source below $161$
+fails, and that the first displayed witness satisfies the
+unit-fraction equation.
+\begin{verbatim}
+from math import isqrt
+p = 30241
+assert all(p % d for d in range(2, isqrt(p) + 1))
+for i in range(1, 161):
+    n = p + i
+    for q in range(1, isqrt(n) + 1):
+        if n % q == 0:
+            for d in (q, n // q):
+                assert d % 4 != 3 or (p + d) % (4 * i) != 0
+i, d = 161, 27
+k, A = (p + d) // (4 * i), (p + i) // d
+x, y, z = i*k, i*k*A, p*k*A
+assert 4*x*y*z == p*(x*y + x*z + y*z)
+\end{verbatim}
+
+The certificate values are
+\[
+ p=30241,\quad i=161,\quad d=27,\quad k=47,\quad A=1126.
+\]
+They yield $(x,y,z)=(7567,8520442,1600414202)$.
+The second search in Theorem~\ref{thm:twochannel} finds this witness
+inside the budget $k\le86$.
+
+\section{Exact checks of both complementary searches}\label{app:twochannel}
+For each of the $80$ primes $p\equiv1\pmod4$ below $1000$, the
+independent trial-division checker enumerates every witness with
+$1\le i<p$ and compares the resulting set of triples $(i,k,d)$
+with the union of the two bounded searches. Equality of these
+sets is checked for all $463$ witnesses.\footnote{Equality of the
+witness sets checks the completeness assertion, including overlaps
+between the branches. The divisor factorizations in the large
+census use a different smallest-factor implementation.}
+The same program replays the integer-vector sorting step of
+the large-sieve proof for small values. These computations check
+the finite algebra and combinatorics used in the proofs.
+
+\begin{center}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Verification & Count or outcome\\
+\midrule
+Prime inputs $p\equiv1\pmod4$ below $200000$ & $8977$\\
+Source pairs at the square-root budget & $1{,}289{,}653$\\
+Prime inputs $p\equiv1\pmod4$ below $10^6$ & $39{,}175$\\
+Failures of the single square-root cutoff below $10^6$ & $30241$\\
+Complete witness-set comparisons below $1000$ & $80$ primes\\
+Witnesses in those comparisons & $463$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Source files and build instructions}
+The email archive contains this PDF, the AMS article source,
+all included proof sections, PNG figures and their TikZ sources,
+exact verification reports, and the programs that reproduce them.
+The principal source compiles from the archive root. Three
+\texttt{pdflatex} passes resolve its references. The figures
+included in the article are PNG files generated from the supplied
+TikZ sources. Their generation is independent of compiling the
+article itself.
+
+The numerical constant in the density estimate and the finite
+search theorem have written analytic proofs. Their verification
+programs establish finite identities and enumerations. The
+distribution theorems about primes used in the proof are the
+stated standard inputs in analytic number theory.
+
+
+\section*{Declarations}
+
+\subsection*{Funding}
+This research received no external funding.
+
+\subsection*{Ethics approval and consent}
+This work consists of mathematical proofs and exact arithmetic
+computations. It involves no human participants or experimental animals.
+Ethics approval and informed consent are not applicable.
+
+\subsection*{Data and code availability}
+The manuscript, source files, figures, verification programs,
+and computational reports are available at
+\url{https://github.com/anaxia-research/ErdosProblem1/tree/main/source-search}.
+
+\subsection*{Declaration of AI assistance}
+OpenAI ChatGPT/Codex assisted with mathematical exploration,
+drafting, language editing, and verification code.
+Its use included proof suggestions and computational checks.
+The arguments, references, and verification procedures are
+provided in the paper and repository for examination.
+Responsibility for the submitted version rests with the authors.
+
+\subsection*{Conflicts of interest}
+The authors declare no conflicts of interest.
 
 \begin{thebibliography}{99}
 \bibitem{ET} C. Elsholtz and T. Tao,
 Counting the number of solutions to the Erd\H{o}s--Straus equation
 on unit fractions, \emph{J. Aust. Math. Soc.} 94 (2013), 50--105.
 \href{https://arxiv.org/abs/1107.1010v6}{arXiv:1107.1010v6}.
-\bibitem{Romanov} T. Romanov,
-\emph{Failure of the first $M$ sources: a sieve bound and its
-dependence on $M$}, circulated manuscript, November 2026,
-16 pages. Supplied to the project lead as \texttt{fixed\_m\_proof.pdf}.
 \bibitem{Richert} H.-E. Richert,
 \emph{Lectures on Sieve Methods}, notes by S. Srinivasan,
 Tata Institute of Fundamental Research, Bombay, 1976.
@@ -660,9 +694,5 @@ preprint, 2026.
 \emph{The exponent $3/4$ for the exceptional sets of the equations
 $K/n=1/x+1/y+1/z$}, preprint, 2026.
 \href{https://arxiv.org/abs/2611.14167v1}{arXiv:2611.14167v1}.
-\bibitem{BB} D. Bhattacharjee and U. Bhattacharya,
-\emph{An explicit exponent for the exceptional set of the
-Erd\H{o}s--Straus equation}, manuscript, 29 October 2026.
-\href{https://github.com/anaxia-research/ErdosProblem1/blob/main/preprintErdosStrausExceptionalSet/ErdosStrausExceptionalSet.pdf}{Repository version}.
 \end{thebibliography}
 \end{document}

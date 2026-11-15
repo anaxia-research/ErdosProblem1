@@ -1,0 +1,7 @@
+{
+  "primes_below_1000_checked": 80,
+  "complete_witnesses_checked": 463,
+  "comparison": "Full witness set equals the union of both bounded channels",
+  "exact_sorting_count_cases": 60,
+  "stronger_sieve_proof": "Analytic proof in sharper-large-sieve.tex"
+}

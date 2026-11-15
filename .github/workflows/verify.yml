@@ -79,3 +79,5 @@ jobs:
           python-version: '3.12'
       - run: python checks/python/source_search.py --limit 200000 --report source-search/verification.json
       - run: python checks/python/source_census.py --limit 1000000 --report source-search/million-census.json
+      - run: python checks/python/two_channel.py
+      - run: python scripts/package_source_search.py

@@ -15,4 +15,9 @@ exceptional/paper/mainNotes.bib
 source-search/*.aux
 source-search/*.log
 source-search/*.out
+source-search/*.toc
+source-search/figures/*.aux
+source-search/figures/*.log
+source-search/figures/*.out
+source-search/figures/*.pdf
 engine/deep_mc

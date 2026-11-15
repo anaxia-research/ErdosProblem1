@@ -1,26 +1,41 @@
 cff-version: 1.2.0
-message: "Please cite the source-search manuscript with the three authors below."
+message: Please cite the source-search manuscript with the three authors below.
 type: software
-title: "Sieve bounds and search-depth obstructions for the Erdős–Straus equation"
+title: Stronger sieve bounds and complete Type I source searches for the Erdős–Straus
+  equation
 authors:
-  - family-names: Bhattacharjee
-    given-names: Deep
-    orcid: "https://orcid.org/0000-0003-0466-750X"
-  - family-names: Bhattacharya
-    given-names: Ushashi
-    orcid: "https://orcid.org/0009-0002-2254-3914"
-  - family-names: Romanov
-    given-names: Tristan
-url: "https://github.com/anaxia-research/ErdosProblem1/tree/main/source-search"
+- family-names: Bhattacharjee
+  given-names: Deep
+  orcid: https://orcid.org/0000-0003-0466-750X
+  affiliation: Formerly, Electro-Gravitational Space Propulsion Laboratory (EGSPL),
+    Bhubaneswar, Odisha 751030, India; Formerly, University of Calcutta (Heramba Chandra
+    College), 23/49 Gariahat Road, Golpark, Kolkata 700029, West Bengal, India
+- family-names: Romanov
+  given-names: Tristan
+  affiliation: Independent Researcher, San Francisco, CA, USA
+- family-names: Bhattacharya
+  given-names: Ushashi
+  orcid: https://orcid.org/0009-0002-2254-3914
+  affiliation: Formerly, National Taiwan University, Taipei 106319, Taiwan
+url: https://github.com/anaxia-research/ErdosProblem1/tree/main/source-search
 preferred-citation:
   type: article
-  title: "Sieve bounds and search-depth obstructions for the Erdős–Straus equation"
+  title: Stronger sieve bounds and complete Type I source searches for the Erdős–Straus
+    equation
   year: 2026
-  url: "https://github.com/anaxia-research/ErdosProblem1/blob/main/source-search/main.pdf"
+  url: https://github.com/anaxia-research/ErdosProblem1/blob/main/source-search/main.pdf
   authors:
-    - family-names: Bhattacharjee
-      given-names: Deep
-    - family-names: Bhattacharya
-      given-names: Ushashi
-    - family-names: Romanov
-      given-names: Tristan
+  - family-names: Bhattacharjee
+    given-names: Deep
+    orcid: https://orcid.org/0000-0003-0466-750X
+    affiliation: Formerly, Electro-Gravitational Space Propulsion Laboratory (EGSPL),
+      Bhubaneswar, Odisha 751030, India; Formerly, University of Calcutta (Heramba
+      Chandra College), 23/49 Gariahat Road, Golpark, Kolkata 700029, West Bengal,
+      India
+  - family-names: Romanov
+    given-names: Tristan
+    affiliation: Independent Researcher, San Francisco, CA, USA
+  - family-names: Bhattacharya
+    given-names: Ushashi
+    orcid: https://orcid.org/0009-0002-2254-3914
+    affiliation: Formerly, National Taiwan University, Taipei 106319, Taiwan
