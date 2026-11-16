@@ -1,0 +1,3 @@
+lean/.lake/
+julia/results/*.tmp
+c/*.o

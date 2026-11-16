@@ -1,0 +1,5 @@
+Corollary 6 (m = 7), primes 5 <= p < 20000, p = 1 mod 4: 1125 primes, 222 with x = (p+7)/4 not good
+  mismatches with the stated description: 0   brute force vs ratio criterion: 0
+m = 11 description, primes 5 <= p < 20000, p = 1 mod 4: 1125 primes, 314 with x = (p+11)/4 not good
+  mismatches with the stated description: 0   brute force vs ratio criterion: 0
+time: 1.7 s
