@@ -1,0 +1,15 @@
+Lemma 2 / Theorems 3, 4 / Corollary 5, primes 5 <= p < 3000, p = 1 mod 4, all m = 4x - p
+  cor5a instances: 232
+  cor5b instances: 210
+  cor5c instances (>= n): 140
+  cor5c instances (n-1, p != 1 mod m): 66
+  failing pairs: 216765
+  first-kind failing pairs: 219896
+  lemma2 checked: 221394
+  pairs: 221394
+  reciprocity checks: 504695
+  thm3 equality: 242
+  thm4 equality: 164
+  thm4 failing prime-power pairs: 58617
+violations: 0
+time: 1.8 s

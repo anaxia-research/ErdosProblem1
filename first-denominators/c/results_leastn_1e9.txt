@@ -1,0 +1,52 @@
+record p=5 n=3 a=1  log2p^2=2.6
+record p=13 n=7 a=1  log2p^2=6.6
+record p=37 n=19 a=1  log2p^2=13.0
+record p=157 n=79 a=1  log2p^2=25.6
+FAIL p=409
+FAIL p=577
+record p=997 n=111 a=2  log2p^2=47.7
+record p=1621 n=203 a=3  log2p^2=54.6
+record p=4357 n=623 a=4  log2p^2=70.2
+FAIL p=5569
+FAIL p=9601
+record p=12301 n=879 a=5  log2p^2=88.7
+record p=18217 n=911 a=3  log2p^2=96.2
+record p=23041 n=2095 a=4  log2p^2=100.9
+FAIL p=23929
+record p=26209 n=2383 a=4  log2p^2=103.5
+record p=60217 n=3011 a=3  log2p^2=121.1
+FAIL p=83449
+record p=98017 n=8911 a=4  log2p^2=132.1
+FAIL p=102001
+record p=184837 n=92419 a=1  log2p^2=147.1
+FAIL p=329617
+FAIL p=712321
+FAIL p=1134241
+FAIL p=1724209
+FAIL p=1726201
+FAIL p=5212561
+FAIL p=8813281
+record p=11814001 n=310895 a=9  log2p^2=265.2
+record p=20445289 n=314543 a=6  log2p^2=283.4
+record p=85664329 n=2953943 a=18  log2p^2=333.6
+primes 25423491 fail 14 mean n 32.35
+n in [2^1,2^2): 12712625
+n in [2^2,2^3): 4237310
+n in [2^3,2^4): 3389889
+n in [2^4,2^5): 1880092
+n in [2^5,2^6): 1317417
+n in [2^6,2^7): 943894
+n in [2^7,2^8): 482622
+n in [2^8,2^9): 247006
+n in [2^9,2^10): 123935
+n in [2^10,2^11): 54245
+n in [2^11,2^12): 22440
+n in [2^12,2^13): 8118
+n in [2^13,2^14): 2723
+n in [2^14,2^15): 813
+n in [2^15,2^16): 255
+n in [2^16,2^17): 64
+n in [2^17,2^18): 21
+n in [2^18,2^19): 5
+n in [2^19,2^20): 1
+n in [2^21,2^22): 2

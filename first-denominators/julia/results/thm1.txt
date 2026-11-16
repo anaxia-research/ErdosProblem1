@@ -1,0 +1,5 @@
+Theorem 1, primes 5 <= p < 2000, p = 1 mod 4, all m = 4x - p with p/4 < x < p
+pairs (p,m) checked: 101715   good (brute force on divisors of (px)^2): 2776
+mismatches between brute force and ratio criterion: 0
+explicit solutions from the two formulas checked in exact arithmetic: 7006   failures: 0
+time: 2.6 s

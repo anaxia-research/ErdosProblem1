@@ -1,0 +1,11 @@
+Section 3 check: primes p = 1 (mod 4), 5 <= p <= 10000000000, representation p = 4acd - a - c
+method: least a with a divisor of p + a that is -1 mod 4a (a = 1 by sieve, others by trial division);
+        exhaustive up to amax(p) = floor((1+sqrt(1+4p))/4), which suffices by the a <-> c symmetry
+threads: 4   time: 66.7 s
+primes p = 1 mod 4 checked: 227523275
+primes not settled by a = 1 (sent to trial division): 22628635
+primes with no representation: 14
+list: 409, 577, 5569, 9601, 23929, 83449, 102001, 329617, 712321, 1134241, 1724209, 1726201, 5212561, 8813281
+independent brute force (all a <= c with 4ac | p+a+c) confirms no representation: true (14/14)
+largest least a: a = 469 at p = 53325721
+distribution of least a (a: count): 1: 204894640, 2: 15816568, 3: 3978265, 4: 1386660, 5: 826099, 6: 295125, 7: 76093, 8: 96962, 9: 51432, 10: 24421, 11: 33543, 12: 9848, 13: 6111, 14: 9428, 15: 2843, 16: 2195, 17: 3390, 18: 1597, 19: 1399, 20: 1636, 21: 991, 22: 225, 23: 491, 24: 474, 25: 229, 26: 560, 27: 221, 28: 132, 29: 295, 30: 143, 31: 95, 32: 132, 33: 92, 34: 82, 35: 102, 36: 78, 37: 20, 38: 87, 39: 34, 40: 27, 41: 84, 42: 28, 43: 7, 44: 41, 45: 15, 46: 19, 47: 20, 48: 15, 49: 7, 50: 22, 51: 16, 52: 6, 53: 17, 54: 8, 55: 4, 56: 18, 57: 2, 58: 2, 59: 12, 60: 6, 61: 9, 62: 10, 63: 3, 64: 4, >64: 121
